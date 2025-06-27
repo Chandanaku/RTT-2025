@@ -1,0 +1,31 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+  line-height: 1.6;
+}
+
+#product-container {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+#cart {
+  list-style: none;
+  padding: 0;
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.cart-item span {
+  flex: 1;
+}
+
+.cart-item button {
+  margin-left: 10px;
+}
