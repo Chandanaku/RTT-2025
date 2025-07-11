@@ -83,10 +83,8 @@ button[type="submit"]:hover {
 }
 .container1 {
   display: grid;
-  grid-template-columns: repeat(
-    4,
-    1fr
-  ); /*to repeat the posts in 4 col and extendable rows */
+  grid-template-columns: repeat(4, 1fr);
+  /*to repeat the posts in 4 col and extendable rows */
 
   gap: 3rem;
 }
@@ -124,12 +122,15 @@ button[type="submit"]:hover {
 }
 
 @media (max-width: 600px) {
+  .container,
+  .container1 {
+    padding: 10px;
+    font-size: 14px;
+  }
 }
 @media (max-width: 1024px) {
-  .container {
-    border-radius: 10px;
-  }
+  .container,
   .container1 {
-    border-radius: 10px;
+    font-size: 20px;
   }
 }
