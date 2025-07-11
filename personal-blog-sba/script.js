@@ -12,12 +12,18 @@ const p = document.getElementsByClassName("container1")[0];
 const form = document.getElementById("form-inputs");
 const pctr = document.getElementById("picture-input");
 const prview = document.getElementById("preview");
+//input type image file preview
 
 pctr.addEventListener("change", function () {
   const file = pctr.files[0];
+  const r = new FileReader();
   if (file) {
-    prview.src = URL.createObjectURL(file);
-    prview.style.display = "block";
+    r.onload = function (e) {
+      prview.src = e.target.result;
+      prview.style.display = "block";
+    };
+
+    r.readAsDataURL(file);
   } else {
     prview.style.display = "none";
   }
@@ -52,7 +58,7 @@ function display(posts) {
     const upd_btn = document.createElement("button");
     del_btn.textContent = "➖";
     upd_btn.textContent = "🖊️";
-    card.appendChild(ppic);
+
     card.appendChild(vm);
     vmb.appendChild(upd_btn);
     vmb.appendChild(del_btn);
@@ -60,6 +66,8 @@ function display(posts) {
     p.appendChild(card);
     del_btn.addEventListener("click", () => {
       posts.splice(index, 1);
+      localStorage.setItem("list", JSON.stringify(posts));
+
       display(posts);
     });
     upd_btn.addEventListener("click", () => {
@@ -67,6 +75,7 @@ function display(posts) {
       content.value = post.content;
       prview.src = post.imge;
       i = index;
+      localStorage.setItem("list", JSON.stringify(posts));
     });
   });
 
@@ -100,7 +109,6 @@ submit.addEventListener("click", (e) => {
     errormsg[1].textContent = "";
     errormsg[2].textContent = "";
     errormsg[3].textContent = "";
-    errormsg = "";
   }
 });
 
@@ -127,5 +135,8 @@ content.addEventListener("input", () => {
 });
 
 document.addEventListener("DOMContentLoaded", () => {
-  localStorage.getItem("list");
+  const stored = localStorage.getItem("list");
+  const psts = stored ? JSON.parse(stored) : [];
+  posts = psts; // Restore global state
+  display(posts);
 });
