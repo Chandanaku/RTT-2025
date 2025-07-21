@@ -1,0 +1,16 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var PhysicalProduct_1 = require("./modules/PhysicalProduct");
+var DigitalProduct_1 = require("./modules/DigitalProduct");
+var filtering_dis_1 = require("./modules/filtering_dis");
+var taxCalculator_1 = require("./utils/taxCalculator");
+var pp1 = new PhysicalProduct_1.PhysicalProduct("Laptop", "dell", 450, 30);
+var dp1 = new DigitalProduct_1.DigitalProduct("book", "lilly", 9, 35);
+var d = new taxCalculator_1.taxCalculator();
+console.log("${d.calculateTax(10)}");
+console.log(pp1.displayDetails());
+console.log(dp1.displayDetails());
+console.log(pp1.applyBulkDiscount(400));
+console.log(pp1.applyDiscount(5));
+console.log((0, filtering_dis_1.sortProducts)([pp1, dp1], "name"));
+console.log(pp1.applyBulkDiscount(25));

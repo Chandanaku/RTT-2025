@@ -1,0 +1,15 @@
+import { PhysicalProduct as pp } from "./modules/PhysicalProduct";
+import { DigitalProduct as dp } from "./modules/DigitalProduct";
+import { Product } from "./modules/product";
+import { sortProducts } from "./modules/filtering_dis";
+import { taxCalculator } from "./utils/taxCalculator";
+const pp1 = new pp("Laptop", "dell", 450, 30);
+const dp1 = new dp("book", "lilly", 9, 35);
+const d = new taxCalculator();
+console.log("${d.calculateTax(10)}");
+console.log(pp1.displayDetails());
+console.log(dp1.displayDetails());
+console.log(pp1.applyBulkDiscount(400));
+console.log(pp1.applyDiscount(5));
+console.log(sortProducts([pp1, dp1], "name"));
+console.log(pp1.applyBulkDiscount(25));
